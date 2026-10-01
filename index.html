@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameHub Store</title>
+
+<style>
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0e;
+    color: #fff;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+    --blue: #1685f5;
+    --blue-hover: #006edb;
+    --dark: #111116;
+    --dark2: #18181e;
+    --dark3: #23232a;
+    --border: #303038;
+    --gray: #999;
+    --green: #53d769;
+    --red: #ff4965;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    height: 70px;
+    background: rgba(17,17,22,.96);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 4%;
+
+    gap: 30px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav a {
+    color: #c7c7cc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.nav a:hover {
+    color: white;
+}
+
+.header-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+
+    background: #222229;
+
+    border: 1px solid #363640;
+
+    border-radius: 8px;
+
+    padding: 0 12px;
+}
+
+.search input {
+    width: 210px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: white;
+
+    padding: 11px 8px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--dark3);
+    color: white;
+
+    font-size: 18px;
+
+    position: relative;
+}
+
+.icon-btn:hover {
+    background: #35353e;
+}
+
+.counter {
+    position: absolute;
+
+    right: -5px;
+    top: -5px;
+
+    width: 19px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.container {
+    width: 92%;
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 520px;
+
+    margin-top: 25px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.96),
+            rgba(0,0,0,.67),
+            rgba(0,0,0,.08)
+        ),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=90");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-content {
+    width: 620px;
+    padding: 60px;
+}
+
+.tag {
+    display: inline-block;
+
+    background: var(--blue);
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #d3d3d3;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn {
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 13px 20px;
+
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.btn-blue {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-blue:hover {
+    background: var(--blue-hover);
+    transform: translateY(-2px);
+}
+
+.btn-white {
+    background: white;
+    color: #111;
+}
+
+.btn-white:hover {
+    background: #ddd;
+}
+
+.btn-dark {
+    background: var(--dark3);
+    color: white;
+}
+
+.btn-dark:hover {
+    background: #393942;
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.section {
+    margin-top: 60px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 22px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+}
+
+.section-header p {
+    color: var(--gray);
+    margin-top: 6px;
+}
+
+
+/* =====================================================
+   CATEGORÍAS
+===================================================== */
+
+.categories {
+    display: flex;
+    gap: 9px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+}
+
+.category {
+    white-space: nowrap;
+
+    padding: 10px 17px;
+
+    background: #202027;
+
+    border: 1px solid #33333b;
+
+    color: #bbb;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+.category:hover,
+.category.active {
+    background: white;
+    color: black;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.games-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 18px;
+}
+
+.game {
+    background: var(--dark2);
+
+    border: 1px solid #292930;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    transition: .25s;
+
+    position: relative;
+}
+
+.game:hover {
+    transform: translateY(-7px);
+
+    border-color: #4c4c57;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.4);
+}
+
+.game-img {
+    width: 100%;
+
+    height: 270px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.favorite {
+    position: absolute;
+
+    right: 10px;
+    top: 10px;
+
+    width: 37px;
+    height: 37px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.75);
+
+    color: white;
+
+    font-size: 20px;
+
+    z-index: 3;
+}
+
+.favorite.active {
+    color: var(--red);
+}
+
+.game-body {
+    padding: 17px;
+}
+
+.game-body h3 {
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.game-type {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.price-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+.old-price {
+    color: #777;
+    text-decoration: line-through;
+    font-size: 12px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.free {
+    color: var(--green);
+}
+
+.game-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 7px;
+}
+
+.game-buttons button {
+    padding: 10px 4px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   OFERTAS
+===================================================== */
+
+.offer-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.offer {
+    background:
+        linear-gradient(
+            135deg,
+            #202029,
+            #15151a
+        );
+
+    border: 1px solid #2d2d36;
+
+    padding: 28px;
+
+    border-radius: 12px;
+}
+
+.offer-icon {
+    font-size: 38px;
+    margin-bottom: 14px;
+}
+
+.offer h3 {
+    margin-bottom: 8px;
+}
+
+.offer p {
+    color: #999;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   BIBLIOTECA
+===================================================== */
+
+.library {
+    background: var(--dark2);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 25px;
+}
+
+.library-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+.library-card {
+    background: #24242b;
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.library-empty {
+    text-align: center;
+
+    color: #777;
+
+    padding: 35px;
+}
+
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+.cart {
+    position: fixed;
+
+    top: 0;
+    right: -430px;
+
+    width: 410px;
+    height: 100vh;
+
+    background: #18181d;
+
+    border-left: 1px solid #333;
+
+    z-index: 5000;
+
+    transition: .3s;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px;
+}
+
+.cart.open {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #333;
+}
+
+.close {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #292930;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+.cart-items {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 15px 0;
+}
+
+.cart-item {
+    background: #25252c;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+}
+
+.cart-item-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.remove {
+    border: none;
+    background: none;
+
+    color: var(--red);
+
+    font-size: 16px;
+}
+
+.cart-footer {
+    border-top: 1px solid #333;
+
+    padding-top: 20px;
+}
+
+.total {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.85);
+
+    z-index: 6000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    max-width: 750px;
+    width: 100%;
+
+    background: #202026;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.modal-img {
+    width: 100%;
+    height: 350px;
+
+    object-fit: cover;
+}
+
+.modal-content {
+    padding: 28px;
+}
+
+.modal-content h2 {
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+.modal-category {
+    color: #888;
+
+    margin-bottom: 18px;
+}
+
+.modal-description {
+    color: #bbb;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+.modal-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.modal-price {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    background: var(--blue);
+
+    padding: 15px 22px;
+
+    border-radius: 8px;
+
+    opacity: 0;
+
+    transform: translateY(100px);
+
+    transition: .3s;
+
+    z-index: 9000;
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    margin-top: 80px;
+
+    background: #15151a;
+
+    border-top: 1px solid #292930;
+
+    padding: 45px 5%;
+
+    text-align: center;
+
+    color: #777;
+}
+
+footer strong {
+    color: white;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1150px) {
+
+    .games-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+@media(max-width:800px) {
+
+    .nav {
+        display: none;
+    }
+
+    .hero-content {
+        padding: 35px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .games-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .offer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .library-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:550px) {
+
+    .search {
+        display: none;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .library-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart {
+        width: 100%;
+        right: -100%;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        GAME<span>HUB</span>
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="#inicio">
+            Inicio
+        </a>
+
+        <a href="#juegos">
+            Juegos
+        </a>
+
+        <a href="#ofertas">
+            Ofertas
+        </a>
+
+        <a href="#biblioteca">
+            Biblioteca
+        </a>
+
+    </nav>
+
+
+    <div class="header-right">
+
+        <div class="search">
+
+            🔎
+
+            <input
+                id="search"
+                type="text"
+                placeholder="Buscar juegos..."
+                oninput="searchGames()"
+            >
+
+        </div>
+
+
+        <button
+            class="icon-btn"
+            onclick="openCart()"
+        >
+
+            🛒
+
+            <span
+                class="counter"
+                id="cartCounter"
+            >
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container" id="inicio">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="tag">
+            DESTACADO
+        </span>
+
+        <h1>
+            Tu próxima aventura comienza aquí
+        </h1>
+
+        <p>
+            Descubre juegos populares, ofertas especiales
+            y crea tu propia biblioteca de videojuegos.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="btn btn-blue"
+                onclick="goToGames()"
+            >
+                Explorar juegos
+            </button>
+
+            <button
+                class="btn btn-white"
+                onclick="goToOffers()"
+            >
+                Ver ofertas
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JUEGOS
+===================================================== -->
+
+<section
+    class="section"
+    id="juegos"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Juegos populares
+            </h2>
+
+            <p>
+                Descubre algunos títulos famosos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterGames('todos', this)"
+        >
+            Todos
+        </button>
+
+        <button
+            class="category"
+            onclick="filterGames('accion', this)"
+        >
+            Acción
+        </button>
+
+        <button
+            class="category"
+            onclick="filterGames('aventura', this)"
+        >
+            Aventura
+        </button>
+
+        <button
+            class="category"
+            onclick="filterGames('supervivencia', this)"
+        >
+            Supervivencia
+        </button>
+
+        <button
+            class="category"
+            onclick="filterGames('mundo', this)"
+        >
+            Mundo abierto
+        </button>
+
+    </div>
+
+
+    <br>
+
+
+    <div
+        class="games-grid"
+        id="gamesGrid"
+    >
+
+        <!-- FORTNITE -->
+
+        <article
+            class="game"
+            data-category="accion"
+            data-name="Fortnite"
+        >
+
+            <button
+                class="favorite"
+                onclick="favorite(this)"
+            >
+                ♡
+            </button>
+
+            <img
+                class="game-img"
+                src="https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=900&q=85"
+                alt="Fortnite"
+            >
+
+            <div class="game-body">
+
+                <h3>
+                    Fortnite
+                </h3>
+
+                <p class="game-type">
+                    Acción · Battle Royale
+                </p>
+
+                <div class="price-line">
+
+                    <span class="price free">
+                        Gratis
+                    </span>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="btn-blue"
+                        onclick="getGame(0)"
+                    >
+                        Obtener
+                    </button>
+
+                    <button
+                        class="btn-dark"
+                        onclick="details(0)"
+                    >
+                        Detalles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- MINECRAFT -->
+
+        <article
+            class="game"
+            data-category="supervivencia"
+            data-name="Minecraft"
+        >
+
+            <button
+                class="favorite"
+                onclick="favorite(this)"
+            >
+                ♡
+            </button>
+
+            <img
+                class="game-img"
+                src="https://images.unsplash.com/photo-1587573089734-5998a0a6a5a1?auto=format&fit=crop&w=900&q=85"
+                alt="Minecraft"
+            >
+
+            <div class="game-body">
+
+                <h3>
+                    Minecraft
+                </h3>
+
+                <p class="game-type">
+                    Sandbox · Supervivencia
+                </p>
+
+                <div class="price-line">
+
+                    <span class="price">
+                        $29.99
+                    </span>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="btn-blue"
+                        onclick="addCart(1)"
+                    >
+                        Comprar
+                    </button>
+
+                    <button
+                        class="btn-dark"
+                        onclick="details(1)"
+                    >
+                        Detalles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- GTA V -->
+
+        <article
+            class="game"
+            data-category="mundo"
+            data-name="Grand Theft Auto V"
+        >
+
+            <button
+                class="favorite"
+                onclick="favorite(this)"
+            >
+                ♡
+            </button>
+
+            <img
+                class="game-img"
+                src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=85"
+                alt="Grand Theft Auto V"
+            >
+
+            <div class="game-body">
+
+                <h3>
+                    Grand Theft Auto V
+                </h3>
+
+                <p class="game-type">
+                    Acción · Mundo abierto
+                </p>
+
+                <div class="price-line">
+
+                    <span class="old-price">
+                        $39.99
+                    </span>
+
+                    <span class="price">
+                        $19.99
+                    </span>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="btn-blue"
+                        onclick="addCart(2)"
+                    >
+                        Comprar
+                    </button>
+
+                    <button
+                        class="btn-dark"
+                        onclick="details(2)"
+                    >
+                        Detalles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- RED DEAD -->
+
+        <article
+            class="game"
+            data-category="aventura"
+            data-name="Red Dead Redemption 2"
+        >
+
+            <button
+                class="favorite"
+                onclick="favorite(this)"
+            >
+                ♡
+            </button>
+
+            <img
+                class="game-img"
+                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85"
+                alt="Red Dead Redemption 2"
+            >
+
+            <div class="game-body">
+
+                <h3>
+                    Red Dead Redemption 2
+                </h3>
+
+                <p class="game-type">
+                    Aventura · Acción
+                </p>
+
+                <div class="price-line">
+
+                    <span class="old-price">
+                        $59.99
+                    </span>
+
+                    <span class="price">
+                        $29.99
+                    </span>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="btn-blue"
+                        onclick="addCart(3)"
+                    >
+                        Comprar
+                    </button>
+
+                    <button
+                        class="btn-dark"
+                        onclick="details(3)"
+                    >
+                        Detalles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ROCKET LEAGUE -->
+
+        <article
+            class="game"
+            data-category="accion"
+            data-name="Rocket League"
+        >
+
+            <button
+                class="favorite"
+                onclick="favorite(this)"
+            >
+                ♡
+            </button>
+
+            <img
+                class="game-img"
+                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85"
+                alt="Rocket League"
+            >
+
+            <div class="game-body">
+
+                <h3>
+                    Rocket League
+                </h3>
+
+                <p class="game-type">
+                    Deportes · Acción
+                </p>
+
+                <div class="price-line">
+
+                    <span class="price free">
+                        Gratis
+                    </span>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="btn-blue"
+                        onclick="getGame(4)"
+                    >
+                        Obtener
+                    </button>
+
+                    <button
+                        class="btn-dark"
+                        onclick="details(4)"
+                    >
+                        Detalles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OFERTAS
+===================================================== -->
+
+<section
+    class="section"
+    id="ofertas"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Ofertas especiales
+            </h2>
+
+            <p>
+                Promociones de la tienda
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="offer-grid">
+
+        <div class="offer">
+
+            <div class="offer-icon">
+                🎁
+            </div>
+
+            <h3>
+                Juegos gratis
+            </h3>
+
+            <p>
+                Encuentra juegos gratuitos y añádelos
+                a tu biblioteca.
+            </p>
+
+        </div>
+
+
+        <div class="offer">
+
+            <div class="offer-icon">
+                🔥
+            </div>
+
+            <h3>
+                Grandes descuentos
+            </h3>
+
+            <p>
+                Encuentra descuentos especiales
+                en juegos seleccionados.
+            </p>
+
+        </div>
+
+
+        <div class="offer">
+
+            <div class="offer-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Recompensas
+            </h3>
+
+            <p>
+                Compra juegos y consigue recompensas
+                dentro de esta demostración.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BIBLIOTECA
+===================================================== -->
+
+<section
+    class="section"
+    id="biblioteca"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Mi biblioteca
+            </h2>
+
+            <p>
+                Tus juegos adquiridos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="library">
+
+        <div
+            class="library-grid"
+            id="library"
+        >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     CARRITO
+===================================================== -->
+
+<aside
+    class="cart"
+    id="cart"
+>
+
+    <div class="cart-header">
+
+        <h2>
+            🛒 Carrito
+        </h2>
+
+        <button
+            class="close"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    >
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="total">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="total">
+                $0.00
+            </strong>
+
+        </div>
+
+        <button
+            class="btn btn-blue"
+            style="width:100%"
+            onclick="checkout()"
+        >
+            Finalizar compra
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="modal"
+    onclick="closeModalBackground(event)"
+>
+
+    <div class="modal-box">
+
+        <img
+            class="modal-img"
+            id="modalImg"
+            src=""
+            alt=""
+        >
+
+        <div class="modal-content">
+
+            <h2 id="modalTitle">
+                Juego
+            </h2>
+
+            <p
+                class="modal-category"
+                id="modalCategory"
+            >
+            </p>
+
+            <p
+                class="modal-description"
+                id="modalDescription"
+            >
+            </p>
+
+            <div class="modal-bottom">
+
+                <span
+                    class="modal-price"
+                    id="modalPrice"
+                >
+                </span>
+
+                <button
+                    class="btn btn-blue"
+                    id="modalButton"
+                >
+                    Comprar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <strong>
+        GAMEHUB
+    </strong>
+
+    <br><br>
+
+    Tienda de videojuegos creada con
+    HTML, CSS y JavaScript.
+
+    <br><br>
+
+    © 2026 GameHub
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   BASE DE DATOS DE JUEGOS
+===================================================== */
+
+const games = [
+
+    {
+        name: "Fortnite",
+
+        category: "Acción · Battle Royale",
+
+        filter: "accion",
+
+        price: 0,
+
+        image:
+        "https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=1000&q=85",
+
+        description:
+        "Una experiencia de acción y supervivencia con partidas competitivas, construcción y diferentes modos de juego."
+    },
+
+    {
+        name: "Minecraft",
+
+        category: "Sandbox · Supervivencia",
+
+        filter: "supervivencia",
+
+        price: 29.99,
+
+        image:
+        "https://images.unsplash.com/photo-1587573089734-5998a0a6a5a1?auto=format&fit=crop&w=1000&q=85",
+
+        description:
+        "Explora mundos generados de forma procedural, consigue recursos, construye estructuras y crea tus propias aventuras."
+    },
+
+    {
+        name: "Grand Theft Auto V",
+
+        category: "Acción · Mundo abierto",
+
+        filter: "mundo",
+
+        price: 19.99,
+
+        image:
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=85",
+
+        description:
+        "Explora una gran ciudad, completa misiones y descubre una historia con múltiples personajes."
+    },
+
+    {
+        name: "Red Dead Redemption 2",
+
+        category: "Aventura · Acción",
+
+        filter: "aventura",
+
+        price: 29.99,
+
+        image:
+        "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=85",
+
+        description:
+        "Una aventura ambientada en el viejo oeste con exploración, misiones, personajes y un amplio mundo abierto."
+    },
+
+    {
+        name: "Rocket League",
+
+        category: "Deportes · Acción",
+
+        filter: "accion",
+
+        price: 0,
+
+        image:
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=85",
+
+        description:
+        "Partidos deportivos que combinan coches, fútbol, velocidad y acción en partidas competitivas."
+    }
+
+];
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
+
+let cart = JSON.parse(
+    localStorage.getItem("gamehub_cart")
+) || [];
+
+let library = JSON.parse(
+    localStorage.getItem("gamehub_library")
+) || [];
+
+
+/* =====================================================
+   GUARDAR DATOS
+===================================================== */
+
+function saveData() {
+
+    localStorage.setItem(
+        "gamehub_cart",
+        JSON.stringify(cart)
+    );
+
+    localStorage.setItem(
+        "gamehub_library",
+        JSON.stringify(library)
+    );
+
+}
+
+
+/* =====================================================
+   AÑADIR AL CARRITO
+===================================================== */
+
+function addCart(index) {
+
+    const game = games[index];
+
+
+    if (cart.some(
+        item => item.name === game.name
+    )) {
+
+        toast(
+            "Este juego ya está en el carrito"
+        );
+
+        openCart();
+
+        return;
+    }
+
+
+    cart.push(game);
+
+    saveData();
+
+    updateCart();
+
+    toast(
+        game.name + " añadido al carrito"
+    );
+
+    openCart();
+
+}
+
+
+/* =====================================================
+   JUEGOS GRATIS
+===================================================== */
+
+function getGame(index) {
+
+    const game = games[index];
+
+
+    if (
+        library.some(
+            item => item.name === game.name
+        )
+    ) {
+
+        toast(
+            "Ya tienes este juego"
+        );
+
+        return;
+    }
+
+
+    library.push(game);
+
+    saveData();
+
+    updateLibrary();
+
+    toast(
+        game.name + " añadido a tu biblioteca"
+    );
+
+}
+
+
+/* =====================================================
+   ACTUALIZAR CARRITO
+===================================================== */
+
+function updateCart() {
+
+    const container =
+        document.getElementById("cartItems");
+
+    const counter =
+        document.getElementById("cartCounter");
+
+    const totalElement =
+        document.getElementById("total");
+
+
+    counter.innerText =
+        cart.length;
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <p style="
+                color:#777;
+                text-align:center;
+                margin-top:30px;
+            ">
+                Tu carrito está vacío.
+            </p>
+        `;
+
+        totalElement.innerText =
+            "$0.00";
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach((game, index) => {
+
+        total += game.price;
+
+
+        const element =
+            document.createElement("div");
+
+        element.className =
+            "cart-item";
+
+
+        element.innerHTML = `
+
+            <div class="cart-item-header">
+
+                <strong>
+                    ${game.name}
+                </strong>
+
+                <button
+                    class="remove"
+                    onclick="removeCart(${index})"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <br>
+
+            <span>
+                ${game.category}
+            </span>
+
+            <br><br>
+
+            <strong>
+                $${game.price.toFixed(2)}
+            </strong>
+
+        `;
+
+
+        container.appendChild(element);
+
+    });
+
+
+    totalElement.innerText =
+        "$" + total.toFixed(2);
+
+}
+
+
+/* =====================================================
+   ELIMINAR CARRITO
+===================================================== */
+
+function removeCart(index) {
+
+    const name =
+        cart[index].name;
+
+
+    cart.splice(index, 1);
+
+    saveData();
+
+    updateCart();
+
+    toast(
+        name + " eliminado del carrito"
+    );
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        toast(
+            "El carrito está vacío"
+        );
+
+        return;
+    }
+
+
+    cart.forEach(game => {
+
+        if (
+            !library.some(
+                item => item.name === game.name
+            )
+        ) {
+
+            library.push(game);
+
+        }
+
+    });
+
+
+    cart = [];
+
+
+    saveData();
+
+    updateCart();
+
+    updateLibrary();
+
+    closeCart();
+
+
+    toast(
+        "¡Compra realizada correctamente!"
+    );
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("biblioteca")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }, 600);
+
+}
+
+
+/* =====================================================
+   BIBLIOTECA
+===================================================== */
+
+function updateLibrary() {
+
+    const container =
+        document.getElementById("library");
+
+
+    if (library.length === 0) {
+
+        container.innerHTML = `
+            <div class="library-empty">
+
+                🎮
+
+                <br><br>
+
+                Todavía no tienes juegos.
+
+                <br>
+
+                Añade un juego a tu biblioteca.
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    library.forEach(game => {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "library-card";
+
+
+        item.innerHTML = `
+
+            <span>
+                🎮 ${game.name}
+            </span>
+
+            <span
+                style="
+                    color:#53d769;
+                    font-weight:bold;
+                "
+            >
+                ✓
+            </span>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
+
+function favorite(button) {
+
+    button.classList.toggle("active");
+
+
+    if (
+        button.classList.contains("active")
+    ) {
+
+        button.innerText = "♥";
+
+        toast(
+            "Añadido a favoritos"
+        );
+
+    } else {
+
+        button.innerText = "♡";
+
+        toast(
+            "Eliminado de favoritos"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FILTROS
+===================================================== */
+
+function filterGames(category, button) {
+
+    document
+        .querySelectorAll(".category")
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    document
+        .querySelectorAll(".game")
+        .forEach(game => {
+
+            if (
+                category === "todos" ||
+                game.dataset.category === category
+            ) {
+
+                game.style.display =
+                    "block";
+
+            } else {
+
+                game.style.display =
+                    "none";
+
+            }
+
+        });
+
+}
+
+
+/* =====================================================
+   BUSCADOR
+===================================================== */
+
+function searchGames() {
+
+    const text =
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase();
+
+
+    document
+        .querySelectorAll(".game")
+        .forEach(game => {
+
+            const name =
+                game.dataset.name
+                    .toLowerCase();
+
+
+            if (
+                name.includes(text)
+            ) {
+
+                game.style.display =
+                    "block";
+
+            } else {
+
+                game.style.display =
+                    "none";
+
+            }
+
+        });
+
+}
+
+
+/* =====================================================
+   DETALLES
+===================================================== */
+
+function details(index) {
+
+    const game =
+        games[index];
+
+
+    document
+        .getElementById("modalImg")
+        .src = game.image;
+
+
+    document
+        .getElementById("modalTitle")
+        .innerText = game.name;
+
+
+    document
+        .getElementById("modalCategory")
+        .innerText = game.category;
+
+
+    document
+        .getElementById("modalDescription")
+        .innerText = game.description;
+
+
+    document
+        .getElementById("modalPrice")
+        .innerText =
+            game.price === 0
+            ? "Gratis"
+            : "$" + game.price.toFixed(2);
+
+
+    const button =
+        document.getElementById(
+            "modalButton"
+        );
+
+
+    button.onclick = function() {
+
+        if (game.price === 0) {
+
+            getGame(index);
+
+        } else {
+
+            addCart(index);
+
+        }
+
+        closeModal();
+
+    };
+
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function closeModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+function closeModalBackground(event) {
+
+    if (
+        event.target.id === "modal"
+    ) {
+
+        closeModal();
+
+    }
+
+}
+
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+function openCart() {
+
+    document
+        .getElementById("cart")
+        .classList.add("open");
+
+}
+
+
+function closeCart() {
+
+    document
+        .getElementById("cart")
+        .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function toast(message) {
+
+    const element =
+        document.getElementById("toast");
+
+
+    element.innerText =
+        message;
+
+
+    element.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer =
+        setTimeout(() => {
+
+            element.classList.remove("show");
+
+        }, 2500);
+
+}
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+function goToGames() {
+
+    document
+        .getElementById("juegos")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function goToOffers() {
+
+    document
+        .getElementById("ofertas")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =====================================================
+   ESC PARA CERRAR
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            closeModal();
+
+            closeCart();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INICIO
+===================================================== */
+
+updateCart();
+
+updateLibrary();
+
+</script>
+
+</body>
+</html>
